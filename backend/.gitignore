@@ -2,8 +2,7 @@
 node_modules/
 
 # Environment variables
-.env
-sample.env
+env
 
 # Logs
 logs
