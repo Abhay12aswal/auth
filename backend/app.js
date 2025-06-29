@@ -4,6 +4,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { connectDB } from './config/connectdb.js';
 import passport from 'passport';
+
 dotenv.config();
 
 const app= express();
@@ -24,6 +25,13 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(passport.initialize());
 
+import userRoutes from "./routes/user.routes.js";
+import { errorHandler } from './middlewares/errorHandler.js';
+
+app.use("/api/v1/user",userRoutes);
+
+
+app.use(errorHandler);
 
 app.listen(port,()=>{
     console.log(`server listening at ${port}`);
